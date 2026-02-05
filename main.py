@@ -11,6 +11,7 @@ def main():
     screen.fill(BG_COLOR)
     clock = pygame.time.Clock()
     player_pos = [0, 2]
+    terminal_mode = False
 
     while True:
         for event in pygame.event.get():
@@ -23,7 +24,7 @@ def main():
                     sys.exit()
 
                 if event.key == pygame.K_RETURN:
-                    pass
+                    terminal_mode = not terminal_mode
 
                 if event.key == pygame.K_w:
                     if player_pos[0] > 0:
@@ -42,8 +43,11 @@ def main():
                         player_pos[1] += 1
 
 
+        if terminal_mode:
+            grid.draw_terminal_grid(screen)
+        else:
+            grid.draw_grid(screen)
 
-        grid.draw_grid(screen)
         player.draw_player(screen, player_pos[0], player_pos[1])
         pygame.display.flip()
         clock.tick(60)
