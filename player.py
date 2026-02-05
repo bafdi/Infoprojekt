@@ -1,5 +1,5 @@
 import pygame
-from settings import *
+from parameter import *
 
 player_size = 20
 
