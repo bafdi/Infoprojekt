@@ -7,7 +7,7 @@ from parameter import *
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((SCREEN_SIZE, SCREEN_SIZE))
+    screen = pygame.display.set_mode((screen_size, screen_size))
     pygame.display.set_caption("PyGame")
     screen.fill(BG_COLOR)
     clock = pygame.time.Clock()
