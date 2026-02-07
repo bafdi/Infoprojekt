@@ -1,7 +1,7 @@
 #"sizes"
 screen_size = 800
-grid_dim = 5
-broken_lines_qty = 2 ** (grid_dim - 1)
+grid_dim = 2
+broken_lines_qty = 2 ** (grid_dim - 2)
 cell_size = screen_size // grid_dim
 margin = (screen_size - (grid_dim - 1) * cell_size) // 2
 player_size = 20

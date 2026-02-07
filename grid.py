@@ -2,7 +2,7 @@ import pygame
 import sys
 from parameter import *
 
-def draw_grid(screen, broken_lines, direction):
+def draw_grid(screen, broken_lines):
     screen.fill(BG_COLOR)
 
     for x in range(grid_dim):
@@ -13,41 +13,47 @@ def draw_grid(screen, broken_lines, direction):
             py = (y * cell_size) + margin
             current_pos = (px, py)
 
+            p1 = (x, y)
+            p2 = (x + 1, y)
+            p3 = (x, y + 1)
+            wall_r = (sorted((p1, p2)))
+            wall_d = (sorted((p1, p3)))
+
             #linie nach rechts (nur wenn ich nicht am grid ende bin)
             if x < grid_dim - 1:
                 next_px = ((x + 1) * cell_size) + margin
-                next_py = py
-                pygame.draw.line(screen, LINE_COLOR_SHADE, current_pos, (next_px, next_py), 10)
-                pygame.draw.line(screen, LINE_COLOR, current_pos, (next_px, next_py), 6)
+                if wall_r not in broken_lines:
+                    pygame.draw.line(screen, LINE_COLOR_SHADE, current_pos, (next_px, py), 10)
+                    pygame.draw.line(screen, LINE_COLOR, current_pos, (next_px, py), 6)
 
             #linie nach unten (nur wenn ich nciht am grid ende bin)
             if y < grid_dim - 1:
-                next_px = px
                 next_py = ((y + 1) * cell_size) + margin
-                pygame.draw.line(screen, LINE_COLOR_SHADE, current_pos, (next_px, next_py), 10)
-                pygame.draw.line(screen, LINE_COLOR, current_pos,(next_px, next_py), 6)
+                if wall_d not in broken_lines:
+                    pygame.draw.line(screen, LINE_COLOR_SHADE, current_pos, (px, next_py), 10)
+                    pygame.draw.line(screen, LINE_COLOR, current_pos,(px, next_py), 6)
 
-def draw_broken_lines(screen, broken_lines, direction):
+def draw_broken_lines(screen, broken_lines):
     thickness = 12
 
-    for line in broken_lines:
-        x, y, next_x, next_y = line
-        px = (x * cell_size) + margin
-        py = (y * cell_size) + margin
+    for start, end in broken_lines:
+        x1, y1 = start
+        x2, y2 = end
 
-        if next_x > x:
-            next_px = (next_x * cell_size) + margin
-            next_py = py
-            pygame.draw.line(screen, BROKEN_COLOR, (px + 10, py), (next_px - 10, next_py), thickness)
-            pygame.draw.line(screen, BROKEN_LINE_COLOR_SHADE, (px + 10, py), (next_px - 10, next_py), thickness//3 + 1)
-            pygame.draw.line(screen, BROKEN_LINE_COLOR, (px + 10, py), (next_px - 10, next_py), thickness//4)
+        px1 = (x1 * cell_size) + margin
+        py1 = (y1 * cell_size) + margin
+        px2 = (x2 * cell_size) + margin
+        py2 = (y2 * cell_size) + margin
 
-        if next_y > y:
-            next_px = px
-            next_py = ((y + 1) * cell_size) + margin
-            pygame.draw.line(screen, BROKEN_COLOR, (px, py + 10), (next_px, next_py - 10), thickness)
-            pygame.draw.line(screen, BROKEN_LINE_COLOR_SHADE, (px, py + 10), (next_px, next_py - 10), thickness //3 + 1)
-            pygame.draw.line(screen, BROKEN_LINE_COLOR, (px, py + 10), (next_px, next_py - 10), thickness//4)
+        if y1 == y2:
+            pygame.draw.line(screen, BROKEN_COLOR, (px1 + 10, py1), (px2 - 10, py2), thickness)
+            pygame.draw.line(screen, BROKEN_LINE_COLOR_SHADE, (px1 + 10, py1), (px2 - 10, py2), thickness//3 + 1)
+            pygame.draw.line(screen, BROKEN_LINE_COLOR, (px1 + 10, py1), (px2 - 10, py2), thickness//4)
+
+        if x1 == x2:
+            pygame.draw.line(screen, BROKEN_COLOR, (px1, py1 + 10), (px2, py2 - 10), thickness)
+            pygame.draw.line(screen, BROKEN_LINE_COLOR_SHADE, (px1, py1 + 10), (px2, py2 - 10), thickness //3 + 1)
+            pygame.draw.line(screen, BROKEN_LINE_COLOR, (px1, py1 + 10), (px2, py2 - 10), thickness//4)
 
 
 def draw_terminal_grid(screen):

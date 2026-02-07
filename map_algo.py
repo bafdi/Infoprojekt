@@ -16,16 +16,20 @@ def generate_broken_lines():
         if direction == 0:
             next_x = x + 1
             next_y = y
-            if next_x >= grid_dim:
-                next_x = x
         else:
             next_x = x
             next_y = y + 1
-            if next_y >= grid_dim:
-                next_y = y
 
-        position = (x, y, next_x, next_y)
-        broken_lines.append(position)
+        if next_x >= grid_dim or next_y >= grid_dim:
+            continue
 
-    return broken_lines, direction
+
+        p1 = (x, y)
+        p2 = (next_x, next_y)
+        wall = tuple(sorted((p1, p2)))
+
+        if wall not in broken_lines:
+            broken_lines.append(wall)
+
+    return broken_lines
 
