@@ -3,6 +3,7 @@ import sys
 import grid
 import player
 import control
+import map_algo
 from parameter import *
 
 def main():
@@ -12,6 +13,9 @@ def main():
     screen.fill(BG_COLOR)
     clock = pygame.time.Clock()
     player_pos = [0, 2]
+    broken_lines, direction= map_algo.generate_broken_lines()
+    print(broken_lines, direction)
+    print(cell_size)
     terminal_mode = False
 
     while True:
@@ -19,7 +23,8 @@ def main():
         if terminal_mode:
             grid.draw_terminal_grid(screen)
         else:
-            grid.draw_grid(screen)
+            grid.draw_grid(screen, broken_lines, direction)
+            grid.draw_broken_lines(screen, broken_lines, direction)
 
         player.draw_player(screen, player_pos[0], player_pos[1])
         pygame.display.flip()

@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d60ac97-6e57-428a-9416-277603772b14" name="Changes" comment="extracted the player control from main.py to control.py for better editability">
-      <change afterPath="$PROJECT_DIR$/map_algo.py" afterDir="false" />
+    <list default="true" id="8d60ac97-6e57-428a-9416-277603772b14" name="Changes" comment="1. parameter fixed&#10;2. created map_algo.py but did not write anything">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/grid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_algo.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_algo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parameter.py" beforeDir="false" afterPath="$PROJECT_DIR$/parameter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
     </list>
@@ -127,6 +128,8 @@
       <workItem from="1770204332400" duration="254000" />
       <workItem from="1770205234544" duration="6638000" />
       <workItem from="1770281618871" duration="5638000" />
+      <workItem from="1770320836919" duration="1598000" />
+      <workItem from="1770486400972" duration="8689000" />
     </task>
     <task id="LOCAL-00001" summary="Screen und Grid erstellt. Probleme beim Grid gelöst">
       <option name="closed" value="true" />
@@ -192,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770300234260</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1. parameter fixed&#10;2. created map_algo.py but did not write anything">
+      <option name="closed" value="true" />
+      <created>1770301487250</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1770301487250</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +230,8 @@
     <MESSAGE value="Minor changes" />
     <MESSAGE value="1. terminal mode de/activate" />
     <MESSAGE value="extracted the player control from main.py to control.py for better editability" />
-    <option name="LAST_COMMIT_MESSAGE" value="extracted the player control from main.py to control.py for better editability" />
+    <MESSAGE value="1. parameter fixed&#10;2. created map_algo.py but did not write anything" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. parameter fixed&#10;2. created map_algo.py but did not write anything" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -238,6 +250,6 @@
     <SUITE FILE_PATH="coverage/Pythonprojekt$grid.coverage" NAME="grid Coverage Results" MODIFIED="1770220303703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Pythonprojekt$constants.coverage" NAME="constants Coverage Results" MODIFIED="1770218366344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Pythonprojekt$game_engine.coverage" NAME="game_engine Coverage Results" MODIFIED="1770218168874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Pythonprojekt$main.coverage" NAME="main Coverage Results" MODIFIED="1770301201654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pythonprojekt$main.coverage" NAME="main Coverage Results" MODIFIED="1770495059204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

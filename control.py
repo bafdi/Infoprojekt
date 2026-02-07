@@ -1,5 +1,6 @@
 import pygame
 import sys
+from parameter import *
 
 def handle_input(player_pos, terminal_mode):
     for event in pygame.event.get():
@@ -19,7 +20,7 @@ def handle_input(player_pos, terminal_mode):
                     player_pos[0] -= 1
 
             if event.key == pygame.K_s:
-                if player_pos[0] < 4:
+                if player_pos[0] < grid_dim - 1:
                     player_pos[0] += 1
 
             if event.key == pygame.K_a:
@@ -27,7 +28,7 @@ def handle_input(player_pos, terminal_mode):
                     player_pos[1] -= 1
 
             if event.key == pygame.K_d:
-                if player_pos[1] < 4:
+                if player_pos[1] < grid_dim - 1:
                     player_pos[1] += 1
 
     return player_pos, terminal_mode
