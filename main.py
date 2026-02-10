@@ -7,6 +7,13 @@ import map_algo
 from control import check_win
 from parameter import *
 
+def start_new_game():
+    player_pos = [0, 0]
+    player_path = [(0, 0)]
+    broken_lines = map_algo.generate_broken_lines()
+    points = map_algo.generate_points(broken_lines)
+    return player_pos, player_path, broken_lines, points
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode((screen_size, screen_size))
@@ -23,13 +30,34 @@ def main():
     terminal_mode = False
 
     while True:
-        player_pos, terminal_mode = control.handle_input(player_pos, terminal_mode, broken_lines, player_path)
+        player_pos, terminal_mode, check = control.handle_input(player_pos, terminal_mode, broken_lines, player_path)
+
+        if check:
+            has_won = control.check_win(player_pos, player_path, broken_lines, points)
+
+            if has_won:
+                screen.fill(WIN_BG_COLOR)
+                player.draw_terminal_line(screen, player_path, color=(0,140,0))
+                pygame.display.flip()
+                pygame.time.wait(3500)
+                terminal_mode = False
+                player_pos, player_path, broken_lines, points = start_new_game()
+
+            else:
+                screen.fill(LOSE_BG_COLOR)
+                player.draw_terminal_line(screen, player_path, color=(140, 0, 0))
+                pygame.display.flip()
+                pygame.time.wait(2000)
+                terminal_mode = False
+                player_pos = [0, 0]
+                player_path = [(0, 0)]
+
         if terminal_mode:
             grid.draw_terminal_grid(screen)
-            player.draw_terminal_line(screen, player_path)
+            player.draw_terminal_line(screen, player_path, PLAYER_COLOR)
             print(player_path)
-            if control.check_win(player_pos, player_path, broken_lines, points):
-                print("WON")
+
+
         else:
             player_path.clear()
             player_path.append(tuple(player_pos))
