@@ -4,6 +4,7 @@ import grid
 import player
 import control
 import map_algo
+from control import check_win
 from parameter import *
 
 def main():
@@ -26,6 +27,9 @@ def main():
         if terminal_mode:
             grid.draw_terminal_grid(screen)
             player.draw_terminal_line(screen, player_path)
+            print(player_path)
+            if control.check_win(player_pos, player_path, broken_lines, points):
+                print("WON")
         else:
             player_path.clear()
             player_path.append(tuple(player_pos))

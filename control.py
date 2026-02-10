@@ -89,3 +89,22 @@ def handle_input(player_pos, terminal_mode, broken_lines, player_path):
                         player_path.append(current)
 
     return player_pos, terminal_mode
+
+def check_win(player_pos, player_path, broken_lines, point_locations):
+    if player_path[0] == ((0, 0)) and player_path[-1] == ((grid_dim - 1, grid_dim - 1)):
+        path_lines = []
+        """print("valid")"""
+        for i in range(0, len(player_path) - 1):
+            pos_1 = player_path[i]
+            pos_2 = player_path[i + 1]
+            path_line = tuple(sorted ((pos_1, pos_2)))
+            path_lines.append(path_line)
+
+            if path_line in broken_lines:
+                return False
+
+        for point in point_locations:
+            if point not in path_lines:
+                return False
+
+        return True
