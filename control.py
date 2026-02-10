@@ -18,7 +18,7 @@ def can_move(current_pos, target_pos, broken_lines, grid_dim):
     return True
 
 
-def handle_input(player_pos, terminal_mode, broken_lines):
+def handle_input(player_pos, terminal_mode, broken_lines, player_path):
     next_pos = list(player_pos)
     moves = False
 
@@ -33,6 +33,9 @@ def handle_input(player_pos, terminal_mode, broken_lines):
 
             if event.key == pygame.K_RETURN:
                 terminal_mode = not terminal_mode
+                if terminal_mode:
+                    player_path.clear()
+                    player_path.append(tuple(player_pos))
 
             if terminal_mode == False:
                 if event.key == pygame.K_w:
@@ -56,20 +59,33 @@ def handle_input(player_pos, terminal_mode, broken_lines):
                         player_pos = next_pos
 
             else:
+                moved_in_terminal = False
+
                 if event.key == pygame.K_w:
                     if player_pos[1] > 0:
                         player_pos[1] -= 1
+                        moved_in_terminal = True
 
                 if event.key == pygame.K_s:
                     if player_pos[1] < grid_dim - 1:
                         player_pos[1] += 1
+                        moved_in_terminal = True
 
                 if event.key == pygame.K_a:
                     if player_pos[0] > 0:
                         player_pos[0] -= 1
+                        moved_in_terminal = True
 
                 if event.key == pygame.K_d:
                     if player_pos[0] < grid_dim - 1:
                         player_pos[0] += 1
+                        moved_in_terminal = True
+
+                if moved_in_terminal:
+                    current = tuple(player_pos)
+                    if len(player_path) > 1 and current == player_path[-2]:
+                        player_path.pop()
+                    else:
+                        player_path.append(current)
 
     return player_pos, terminal_mode

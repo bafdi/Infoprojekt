@@ -107,3 +107,10 @@ def draw_point(screen, point_locations):
 
         if px != 0 and py != 0:
             pygame.draw.circle(screen, POINT_COLOR, (px, py), point_radius)
+
+def draw_start_end(screen):
+    start_x, start_y = margin, margin
+    end_x = (((grid_dim - 1) * cell_size) + margin)
+    end_y = (((grid_dim - 1) * cell_size) + margin)
+    pygame.draw.circle(screen, HOME_COLOR, (start_x, start_y), 20, 2)
+    pygame.draw.circle(screen, HOME_COLOR, (end_x, end_y), 20, 2)
