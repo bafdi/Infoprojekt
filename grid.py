@@ -88,3 +88,22 @@ def draw_terminal_grid(screen):
                 next_px = px
                 next_py = ((y + 1) * cell_size) + margin
                 pygame.draw.line(screen, LINE_COLOR_TERMINAL, current_pos, (next_px, next_py), 6)
+
+
+def draw_point(screen, point_locations):
+    for point_location in point_locations:
+        (x, y), (x2, y2) = point_location
+
+        px = 0
+        py = 0
+
+        if x < x2:
+            px = (x * cell_size) + margin + (cell_size // 2)
+            py = (y * cell_size) + margin
+
+        if y < y2:
+            px = (x * cell_size) + margin
+            py = (y * cell_size) + margin + (cell_size // 2)
+
+        if px != 0 and py != 0:
+            pygame.draw.circle(screen, POINT_COLOR, (px, py), point_radius)

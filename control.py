@@ -57,19 +57,19 @@ def handle_input(player_pos, terminal_mode, broken_lines):
 
             else:
                 if event.key == pygame.K_w:
-                    if player_pos[0] > 0:
-                        player_pos[0] -= 1
-
-                if event.key == pygame.K_s:
-                    if player_pos[0] < grid_dim - 1:
-                        player_pos[0] += 1
-
-                if event.key == pygame.K_a:
                     if player_pos[1] > 0:
                         player_pos[1] -= 1
 
-                if event.key == pygame.K_d:
+                if event.key == pygame.K_s:
                     if player_pos[1] < grid_dim - 1:
                         player_pos[1] += 1
+
+                if event.key == pygame.K_a:
+                    if player_pos[0] > 0:
+                        player_pos[0] -= 1
+
+                if event.key == pygame.K_d:
+                    if player_pos[0] < grid_dim - 1:
+                        player_pos[0] += 1
 
     return player_pos, terminal_mode

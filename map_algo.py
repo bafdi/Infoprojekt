@@ -33,3 +33,29 @@ def generate_broken_lines():
 
     return broken_lines
 
+
+def generate_points(broken_lines):
+    point_locations = []
+
+    while len(point_locations) < point_qty:
+        x = random.randint(0, grid_dim - 1)
+        y = random.randint(0 , grid_dim - 1)
+        direction = random.randint(0, 1) # 0 - diagonal ;1 - horizontal
+
+        if direction == 0:
+            next_x = x + 1
+            next_y = y
+
+        else:
+            next_x = x
+            next_y = y + 1
+
+        if next_x >= grid_dim or next_y >= grid_dim:
+            continue
+
+        point_location = tuple(sorted(((x, y),(next_x, next_y))))
+
+        if point_location not in broken_lines and point_location not in point_locations:
+            point_locations.append(point_location)
+
+    return point_locations

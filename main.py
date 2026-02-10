@@ -16,6 +16,8 @@ def main():
     broken_lines = map_algo.generate_broken_lines()
     print(broken_lines)
     print(cell_size)
+    points = map_algo.generate_points(broken_lines)
+    print(points)
     terminal_mode = False
 
     while True:
@@ -25,6 +27,7 @@ def main():
         else:
             grid.draw_grid(screen, broken_lines)
             grid.draw_broken_lines(screen, broken_lines)
+            grid.draw_point(screen, points)
 
         player.draw_player(screen, player_pos[0], player_pos[1])
         pygame.display.flip()
