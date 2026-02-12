@@ -4,6 +4,7 @@ import grid
 import player
 import control
 import map_algo
+import ui
 from control import check_win
 from parameter import *
 
@@ -67,6 +68,7 @@ def main():
 
         player.draw_player(screen, player_pos[0], player_pos[1])
         grid.draw_start_end(screen)
+        ui.draw_hud(screen, terminal_mode)
         pygame.display.flip()
         clock.tick(60)
 

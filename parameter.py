@@ -7,6 +7,8 @@ margin = (screen_size - (grid_dim - 1) * cell_size) // 2
 player_size = 20
 point_radius = 8
 point_qty = 3
+header_size = (margin//3)*2
+font_size = (margin//3)
 
 
 #Farben
@@ -24,5 +26,6 @@ BROKEN_LINE_COLOR_SHADE = (100, 100, 100)
 HOME_COLOR = (50,50,50)
 WIN_BG_COLOR = (0,255,0)
 LOSE_BG_COLOR = (255,0,0)
+SCHWARZ = (0,0,0)
 
 

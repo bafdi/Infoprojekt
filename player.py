@@ -19,3 +19,4 @@ def draw_terminal_line(screen, player_path, color):
         end_py = (end[1] * cell_size) + margin
 
         pygame.draw.line(screen, color, (start_px, start_py), (end_px, end_py), 6)
+        pygame.draw.circle(screen, color, (start_px + 1, start_py + 1), 3)
