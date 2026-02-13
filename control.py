@@ -1,5 +1,7 @@
 import pygame
 import sys
+import player
+import map_algo
 from parameter import *
 
 def can_move(current_pos, target_pos, broken_lines, grid_dim):
@@ -118,3 +120,24 @@ def check_win(player_pos, player_path, broken_lines, point_locations):
             return False
 
     return True
+
+def start_new_game():
+    player_pos = [0, 0]
+    player_path = [(0, 0)]
+    broken_lines = map_algo.generate_broken_lines()
+    points = map_algo.generate_points(broken_lines)
+    return player_pos, player_path, broken_lines, points
+
+def draw_won(screen, player_path):
+    screen.fill(WIN_BG_COLOR)
+    player.draw_terminal_line(screen, player_path, color=(0, 140, 0))
+    pygame.display.flip()
+    pygame.time.wait(3500)
+
+
+def draw_lost(screen, player_path):
+    screen.fill(LOSE_BG_COLOR)
+    player.draw_terminal_line(screen, player_path, color=(140, 0, 0))
+    pygame.display.flip()
+    pygame.time.wait(2000)
+

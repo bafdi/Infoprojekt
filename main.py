@@ -1,33 +1,27 @@
 import pygame
-import sys
 import grid
 import player
 import control
 import map_algo
 import ui
-from control import check_win
 from parameter import *
-
-def start_new_game():
-    player_pos = [0, 0]
-    player_path = [(0, 0)]
-    broken_lines = map_algo.generate_broken_lines()
-    points = map_algo.generate_points(broken_lines)
-    return player_pos, player_path, broken_lines, points
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((screen_size, screen_size))
-    pygame.display.set_caption("PyGame")
+    pygame.display.set_caption("THE GRID")
     screen.fill(BG_COLOR)
     clock = pygame.time.Clock()
+
     player_pos = [0, 0]
     player_path = [(0, 0)]
+
     broken_lines = map_algo.generate_broken_lines()
+    points = map_algo.generate_points(broken_lines)
     print(broken_lines)
     print(cell_size)
-    points = map_algo.generate_points(broken_lines)
     print(points)
+
     terminal_mode = False
 
     while True:
@@ -37,18 +31,12 @@ def main():
             has_won = control.check_win(player_pos, player_path, broken_lines, points)
 
             if has_won:
-                screen.fill(WIN_BG_COLOR)
-                player.draw_terminal_line(screen, player_path, color=(0,140,0))
-                pygame.display.flip()
-                pygame.time.wait(3500)
+                control.draw_won(screen, player_path)
                 terminal_mode = False
-                player_pos, player_path, broken_lines, points = start_new_game()
+                player_pos, player_path, broken_lines, points = control.start_new_game()
 
             else:
-                screen.fill(LOSE_BG_COLOR)
-                player.draw_terminal_line(screen, player_path, color=(140, 0, 0))
-                pygame.display.flip()
-                pygame.time.wait(2000)
+                control.draw_lost(screen, player_path)
                 terminal_mode = False
                 player_pos = [0, 0]
                 player_path = [(0, 0)]
