@@ -20,7 +20,7 @@ def can_move(current_pos, target_pos, broken_lines, grid_dim):
     return True
 
 
-def handle_input(player_pos, terminal_mode, broken_lines, player_path):
+def handle_input(player_pos, terminal_mode, broken_lines, player_path, menu_mode):
     next_pos = list(player_pos)
     moves = False
     check = False
@@ -31,8 +31,7 @@ def handle_input(player_pos, terminal_mode, broken_lines, player_path):
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                pygame.quit()
-                sys.exit()
+                menu_mode = not menu_mode
 
             if event.key == pygame.K_RETURN:
                 terminal_mode = not terminal_mode
@@ -95,7 +94,7 @@ def handle_input(player_pos, terminal_mode, broken_lines, player_path):
                     if current == end_pos:
                         check = True
 
-    return player_pos, terminal_mode, check
+    return player_pos, terminal_mode, check, menu_mode
 
 def check_win(player_pos, player_path, broken_lines, point_locations):
     start = (0, 0)

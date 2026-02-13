@@ -8,7 +8,8 @@ player_size = 20
 point_radius = 8
 point_qty = 3
 header_size = (margin//3)*2
-font_size = (margin//3)
+footer_size = (margin//3)
+menu_text_size = (margin // 2)
 
 
 #Farben
