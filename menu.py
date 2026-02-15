@@ -1,64 +1,22 @@
-import pygame
-import sys
-from parameter import *
+import pygame_menu
+from parameter import * # Deine Farben und Größen importieren
 
-pygame.font.init()
-objects = []
+# Ein Custom Theme erstellen, das zu deinem Spiel passt
+my_theme = pygame_menu.themes.THEME_BLUE.copy()
+my_theme.title_font = pygame_menu.font.FONT_FRANCHISE # Oder deine Phosphate Font laden
+my_theme.widget_font = pygame_menu.font.FONT_FRANCHISE
+my_theme.background_color = BG_COLOR
+my_theme.widget_font_color = (0, 0, 0)
+my_theme.selection_color = (255, 255, 255) # Highlight Farbe
 
-class Button():
-    def __init__(self, x, y, width, height, buttontext, onclickFuntion = None, onePress = False):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.buttontext = buttontext
-        self.onclickFuntion = onclickFuntion
-        self.onePress = onePress
-        self.alreadyPressed = False
+def start_game():
+    # Hier deine Game-Loop Logik aufrufen
+    # Wichtig: pygame-menu übernimmt den Loop, bis du das Menü deaktivierst
+    pass
 
-        self.fillColors = {
-            'normal': '#0c96c4',
-            'hover': '#64ffff',
-            'pressed': '#00e6e6'
-        }
+menu = pygame_menu.Menu('THE GRID', screen_size, screen_size, theme=my_theme)
 
-        self.buttonSurface = pygame.Surface((self.width, self.height))
-        self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height)
+menu.add.button('Start Game', start_game)
+menu.add.button('Quit', pygame_menu.events.EXIT)
 
-        font = pygame.font.SysFont('phosphate', menu_text_size)
-        self.buttonSurf = font.render(self.buttontext, True, self.fillColors['normal'])
-
-        objects.append(self)
-
-    def process(self, screen):
-        mousePos = pygame.mouse.get_pos()
-        self.buttonSurface.fill(self.fillColors['normal'])
-
-        if self.buttonRect.collidepoint(mousePos):
-            self.buttonSurface.fill(self.fillColors['hover'])
-
-            if pygame.mouse.get_pressed(num_buttons=3)[0]:
-                self.buttonSurface.fill(self.fillColors['pressed'])
-
-                if self.onePress:
-                    self.onclickFuntion()
-
-                elif not self.alreadyPressed:
-                    self.onclickFuntion()
-                    self.alreadyPressed = True
-
-            else:
-                self.alreadyPressed = False
-
-        self.buttonSurface.blit(self.buttonSurf,
-        [self.buttonRect.width/2 - self.buttonSurf.get_rect().width/2,
-                self.buttonRect.height/2 - self.buttonSurf.get_rect().height/2])
-
-        screen.blit(self.buttonSurface, self.buttonRect )
-
-def draw_menu(screen):
-    screen.fill(BG_COLOR)
-
-
-
-
+menu.mainloop(screen)

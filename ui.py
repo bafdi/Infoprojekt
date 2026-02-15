@@ -12,7 +12,7 @@ def draw_hud(screen, terminal_mode):
     text = font.render(ausgabetext, True, SCHWARZ)
     screen.blit(text, [(screen_size - (text.get_width() + (margin//4))), (screen_size - text.get_height())])
 
-    ausgabetext = "Steuerung: W - A - S - D"
+    ausgabetext = "Steuerung: < - ^ - > - v"
     font = pygame.font.SysFont("phosphate", footer_size)
     text = font.render(ausgabetext, True, SCHWARZ)
     screen.blit(text, [(margin//4), (screen_size - text.get_height())])

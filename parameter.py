@@ -9,8 +9,8 @@ point_radius = 8
 point_qty = 3
 header_size = (margin//3)*2
 footer_size = (margin//3)
-menu_text_size = (margin // 2)
-
+menu_header_size = header_size * 2
+menu_text_size = max(16, screen_size // 15)
 
 #Farben
 BG_COLOR = (40, 200, 255)

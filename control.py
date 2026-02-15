@@ -40,19 +40,19 @@ def handle_input(player_pos, terminal_mode, broken_lines, player_path, menu_mode
                     player_path.append(tuple(player_pos))
 
             if terminal_mode == False:
-                if event.key == pygame.K_w:
+                if event.key == pygame.K_UP:
                     next_pos[1] -= 1
                     moves = True
 
-                if event.key == pygame.K_s:
+                if event.key == pygame.K_DOWN:
                     next_pos[1] += 1
                     moves = True
 
-                if event.key == pygame.K_a:
+                if event.key == pygame.K_LEFT:
                     next_pos[0] -= 1
                     moves = True
 
-                if event.key == pygame.K_d:
+                if event.key == pygame.K_RIGHT:
                     next_pos[0] += 1
                     moves = True
 
@@ -63,22 +63,22 @@ def handle_input(player_pos, terminal_mode, broken_lines, player_path, menu_mode
             else:
                 moved_in_terminal = False
 
-                if event.key == pygame.K_w:
+                if event.key == pygame.K_UP:
                     if player_pos[1] > 0:
                         player_pos[1] -= 1
                         moved_in_terminal = True
 
-                if event.key == pygame.K_s:
+                if event.key == pygame.K_DOWN:
                     if player_pos[1] < grid_dim - 1:
                         player_pos[1] += 1
                         moved_in_terminal = True
 
-                if event.key == pygame.K_a:
+                if event.key == pygame.K_LEFT:
                     if player_pos[0] > 0:
                         player_pos[0] -= 1
                         moved_in_terminal = True
 
-                if event.key == pygame.K_d:
+                if event.key == pygame.K_RIGHT:
                     if player_pos[0] < grid_dim - 1:
                         player_pos[0] += 1
                         moved_in_terminal = True
