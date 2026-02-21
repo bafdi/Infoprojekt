@@ -62,6 +62,7 @@ def handle_input(player_pos, terminal_mode, broken_lines, player_path, menu_mode
 
             else:
                 moved_in_terminal = False
+                old_pos = list(player_pos)
 
                 if event.key == pygame.K_UP:
                     if player_pos[1] > 0:
@@ -87,6 +88,9 @@ def handle_input(player_pos, terminal_mode, broken_lines, player_path, menu_mode
                     current = tuple(player_pos)
                     if len(player_path) > 1 and current == player_path[-2]:
                         player_path.pop()
+
+                    elif current in player_path:
+                        player_pos = old_pos
                     else:
                         player_path.append(current)
 

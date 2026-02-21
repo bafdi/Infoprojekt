@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d60ac97-6e57-428a-9416-277603772b14" name="Changes" comment="- created menu and button class">
+    <list default="true" id="8d60ac97-6e57-428a-9416-277603772b14" name="Changes" comment="- redid menu with pygame-menu library">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter.py" beforeDir="false" afterPath="$PROJECT_DIR$/parameter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +139,9 @@
       <workItem from="1770882533473" duration="5555000" />
       <workItem from="1770968313375" duration="11730000" />
       <workItem from="1771062313324" duration="66000" />
-      <workItem from="1771062390827" duration="6427000" />
+      <workItem from="1771062390827" duration="6488000" />
+      <workItem from="1771579649141" duration="1330000" />
+      <workItem from="1771658350860" duration="1283000" />
     </task>
     <task id="LOCAL-00001" summary="Screen und Grid erstellt. Probleme beim Grid gelöst">
       <option name="closed" value="true" />
@@ -289,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770971430911</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="- redid menu with pygame-menu library">
+      <option name="closed" value="true" />
+      <created>1771144103127</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1771144103128</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +332,8 @@
     <MESSAGE value="- Gemini Input" />
     <MESSAGE value="- cleaned up a bit" />
     <MESSAGE value="- created menu and button class" />
-    <option name="LAST_COMMIT_MESSAGE" value="- created menu and button class" />
+    <MESSAGE value="- redid menu with pygame-menu library" />
+    <option name="LAST_COMMIT_MESSAGE" value="- redid menu with pygame-menu library" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -346,7 +353,7 @@
     <SUITE FILE_PATH="coverage/Pythonprojekt$grid.coverage" NAME="grid Coverage Results" MODIFIED="1770220303703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Pythonprojekt$constants.coverage" NAME="constants Coverage Results" MODIFIED="1770218366344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Pythonprojekt$game_engine.coverage" NAME="game_engine Coverage Results" MODIFIED="1770218168874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Pythonprojekt$main.coverage" NAME="main Coverage Results" MODIFIED="1771068162877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pythonprojekt$main.coverage" NAME="main Coverage Results" MODIFIED="1771659618532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
