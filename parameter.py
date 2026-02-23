@@ -12,6 +12,13 @@ footer_size = (margin//3)
 menu_header_size = header_size * 2
 menu_text_size = max(16, screen_size // 15)
 
+# Schwierigkeitsstufen
+DIFFICULTY_SETTINGS = {
+    'easy':   {'broken_qty': 3,  'point_qty': 2, 'label': 'Leicht'},
+    'medium': {'broken_qty': 6,  'point_qty': 3, 'label': 'Mittel'},
+    'hard':   {'broken_qty': 12, 'point_qty': 5, 'label': 'Schwer'},
+}
+
 #Farben
 BG_COLOR = (40, 200, 255)
 BG_COLOR_TERMINAL = (20, 100, 255)

@@ -40,19 +40,19 @@ def handle_input(player_pos, terminal_mode, broken_lines, player_path, menu_mode
                     player_path.append(tuple(player_pos))
 
             if terminal_mode == False:
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_UP or event.key == pygame.K_w:
                     next_pos[1] -= 1
                     moves = True
 
-                if event.key == pygame.K_DOWN:
+                if event.key == pygame.K_DOWN or event.key == pygame.K_s:
                     next_pos[1] += 1
                     moves = True
 
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                     next_pos[0] -= 1
                     moves = True
 
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                     next_pos[0] += 1
                     moves = True
 
@@ -64,22 +64,22 @@ def handle_input(player_pos, terminal_mode, broken_lines, player_path, menu_mode
                 moved_in_terminal = False
                 old_pos = list(player_pos)
 
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_UP or event.key == pygame.K_w:
                     if player_pos[1] > 0:
                         player_pos[1] -= 1
                         moved_in_terminal = True
 
-                if event.key == pygame.K_DOWN:
+                if event.key == pygame.K_DOWN or event.key == pygame.K_s:
                     if player_pos[1] < grid_dim - 1:
                         player_pos[1] += 1
                         moved_in_terminal = True
 
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                     if player_pos[0] > 0:
                         player_pos[0] -= 1
                         moved_in_terminal = True
 
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                     if player_pos[0] < grid_dim - 1:
                         player_pos[0] += 1
                         moved_in_terminal = True
@@ -124,16 +124,29 @@ def check_win(player_pos, player_path, broken_lines, point_locations):
 
     return True
 
-def start_new_game():
+def start_new_game(broken_qty=None, point_qty_val=None):
     player_pos = [0, 0]
     player_path = [(0, 0)]
-    broken_lines = map_algo.generate_broken_lines()
-    points = map_algo.generate_points(broken_lines)
+    broken_lines = map_algo.generate_broken_lines(broken_qty)
+    points = map_algo.generate_points(broken_lines, point_qty_val)
     return player_pos, player_path, broken_lines, points
 
-def draw_won(screen, player_path):
+def draw_won(screen, player_path, moves=0, elapsed_ms=0):
     screen.fill(WIN_BG_COLOR)
     player.draw_terminal_line(screen, player_path, color=(0, 140, 0))
+
+    font_large = pygame.font.SysFont("phosphate", 80)
+    font_small = pygame.font.SysFont("phosphate", 40)
+
+    title = font_large.render("GEWONNEN!", True, (0, 80, 0))
+    screen.blit(title, [screen_size // 2 - title.get_width() // 2, screen_size // 3 - title.get_height() // 2])
+
+    secs_total = elapsed_ms // 1000
+    mins = secs_total // 60
+    secs = secs_total % 60
+    stats = font_small.render(f"Züge: {moves}   Zeit: {mins:02d}:{secs:02d}", True, (0, 80, 0))
+    screen.blit(stats, [screen_size // 2 - stats.get_width() // 2, screen_size // 2 + 10])
+
     pygame.display.flip()
     pygame.time.wait(3500)
 
@@ -141,6 +154,11 @@ def draw_won(screen, player_path):
 def draw_lost(screen, player_path):
     screen.fill(LOSE_BG_COLOR)
     player.draw_terminal_line(screen, player_path, color=(140, 0, 0))
+
+    font_large = pygame.font.SysFont("phosphate", 80)
+    title = font_large.render("VERLOREN!", True, (80, 0, 0))
+    screen.blit(title, [screen_size // 2 - title.get_width() // 2, screen_size // 2 - title.get_height() // 2])
+
     pygame.display.flip()
     pygame.time.wait(2000)
 

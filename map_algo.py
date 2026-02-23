@@ -5,10 +5,12 @@ def generate_direction():
     direction = random.randint(0, 1)
     return direction
 
-def generate_broken_lines():
+def generate_broken_lines(qty=None):
+    if qty is None:
+        qty = broken_lines_qty
     broken_lines = []
 
-    while len(broken_lines) < broken_lines_qty:
+    while len(broken_lines) < qty:
         direction = generate_direction()
         x = random.randint(0, grid_dim - 1)
         y = random.randint(0, grid_dim - 1)
@@ -34,10 +36,12 @@ def generate_broken_lines():
     return broken_lines
 
 
-def generate_points(broken_lines):
+def generate_points(broken_lines, qty=None):
+    if qty is None:
+        qty = point_qty
     point_locations = []
 
-    while len(point_locations) < point_qty:
+    while len(point_locations) < qty:
         x = random.randint(0, grid_dim - 1)
         y = random.randint(0 , grid_dim - 1)
         direction = random.randint(0, 1) # 0 - diagonal ;1 - horizontal
