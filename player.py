@@ -1,14 +1,21 @@
 import pygame
-from parameter import *
+from parameter import PLAYER_COLOR, player_size
 
-def draw_player(screen, grid_x, grid_y):
+
+def draw_player(screen, grid_x, grid_y, params):
+    cell_size = params['cell_size']
+    margin = params['margin']
     px = margin + (grid_x * cell_size)
     py = margin + (grid_y * cell_size)
 
-    rect = pygame.Rect((px-player_size//2), (py-player_size//2), player_size, player_size)
+    rect = pygame.Rect((px - player_size // 2), (py - player_size // 2), player_size, player_size)
     pygame.draw.rect(screen, PLAYER_COLOR, rect)
 
-def draw_terminal_line(screen, player_path, color):
+
+def draw_terminal_line(screen, player_path, color, params):
+    cell_size = params['cell_size']
+    margin = params['margin']
+
     for i in range(len(player_path) - 1):
         start = player_path[i]
         end = player_path[i + 1]
