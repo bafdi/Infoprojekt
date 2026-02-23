@@ -118,10 +118,6 @@ def check_win(player_pos, player_path, broken_lines, point_locations):
         if path_line in broken_lines:
             return False
 
-    for point in point_locations:
-        if point not in path_lines:
-            return False
-
     return True
 
 def start_new_game():
@@ -131,16 +127,5 @@ def start_new_game():
     points = map_algo.generate_points(broken_lines)
     return player_pos, player_path, broken_lines, points
 
-def draw_won(screen, player_path):
-    screen.fill(WIN_BG_COLOR)
-    player.draw_terminal_line(screen, player_path, color=(0, 140, 0))
-    pygame.display.flip()
-    pygame.time.wait(3500)
 
-
-def draw_lost(screen, player_path):
-    screen.fill(LOSE_BG_COLOR)
-    player.draw_terminal_line(screen, player_path, color=(140, 0, 0))
-    pygame.display.flip()
-    pygame.time.wait(2000)
 

@@ -1,7 +1,7 @@
 #"sizes"
 screen_size = 800
 grid_dim = 5
-broken_lines_qty = (grid_dim/2) ** 2
+broken_lines_qty = (grid_dim*3)/2
 cell_size = screen_size // grid_dim
 margin = (screen_size - (grid_dim - 1) * cell_size) // 2
 player_size = 20
@@ -11,6 +11,7 @@ header_size = (margin//3)*2
 footer_size = (margin//3)
 menu_header_size = header_size * 2
 menu_text_size = max(16, screen_size // 15)
+min_required_moves = (grid_dim - 1) * 2
 
 #Farben
 BG_COLOR = (40, 200, 255)

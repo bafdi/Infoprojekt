@@ -8,6 +8,7 @@ import player
 import control
 import map_algo
 import ui
+import score
 from parameter import *
 
 def main():
@@ -64,6 +65,7 @@ def main():
             events = pygame.event.get()
             menu.update(events)
             menu.draw(screen)
+            game_score = 0
 
         else:
             player_pos, game_state["terminal_mode"], check, game_state["menu_mode"] = (
@@ -73,12 +75,18 @@ def main():
                 has_won = control.check_win(player_pos, player_path, broken_lines, points)
 
                 if has_won:
-                    control.draw_won(screen, player_path)
+                    game_score += 250
+                    gathered_points = score.get_new_score(player_path, points)
+                    game_score += (gathered_points * 50)
+                    ui.draw_won(screen, player_path, game_score)
                     game_state["terminal_mode"] = False
                     player_pos, player_path, broken_lines, points = control.start_new_game()
 
                 else:
-                    control.draw_lost(screen, player_path)
+                    game_score -= 100
+                    if game_score < 0:
+                        game_score = 0
+                    ui.draw_lost(screen, player_path, game_score)
                     game_state["terminal_mode"] = False
                     player_pos = [0, 0]
                     player_path = [(0, 0)]
